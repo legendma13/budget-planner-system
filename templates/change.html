@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Change password</title>
+<style>
+     .box1{
+     background-color:  rgba(199, 199, 199, 0.671);
+     width: 70%;
+     border-radius: 7px;
+     margin-top: 50px;
+     }
+     body{
+        background-image: url('https://wonder-day.com/wp-content/uploads/2020/10/wonder-day-among-us-14.png');
+        background-size: 1500px 800px;
+        }
+     .lvl1{
+     float: left;
+     }
+     .save{
+        font-size: 20px;
+        border-radius: 5px;
+        margin-top: 20px;
+        cursor: pointer;
+        padding-top: 14px;
+        padding-bottom: 14px;
+        width: 20%;
+        background-color:rgb(15, 180, 0);
+        }
+     @media screen and (max-width: 600px){
+     .box1{
+     width: 90%;
+     }
+     body{
+     background-size: 480px 700px;
+     }
+     .save{
+     width: 100%;
+     }
+     }
+</style>
+</head>
+
+<body>
+{% extends 'design.html' %}
+{% block content %}
+<center>
+<div class="box1">
+<form method="post">
+    <h1>Change Password</h1>
+        <label class="lvl1">New Username</label>
+    <center>
+        <input type="text" placeholder="Enter New Username" name="user" class="txt1" value="{{ request.form['user'] }}">
+    </center>
+        <label class="lvl1">Current Password</label>
+    <center>
+        <input type="password" placeholder="Enter Current Password" name="Cpass" class="txt1" value="{{ request.form['Cpass'] }}">
+    </center>
+        <label class="lvl1">New Password</label>
+    <center>
+        <input type="password" placeholder="Enter New Password" name="Npass" class="txt1" value="{{ request.form['Npass'] }}">
+    </center>
+        <label class="lvl1">Confirm Password</label>
+    <center>
+        <input type="password" placeholder="Confirm Password" name="Copass" class="txt1" value="{{ request.form['Copass'] }}">
+    </center>
+    <button type="submit" name="sub" class="save">Save</button>
+</form>
+    </div>
+    </center>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Budget Planner</title>
+    <style>
+    body{
+        background-image: url('https://webstockreview.net/images/frost-border-png.png');
+        background-size: cover;
+        }
+        .add{
+        width:40%;
+        float:left;
+        margin-top: 10%;
+        margin-left: 7%;
+        margin-right: 3%;
+        background-color: rgba(199, 199, 199, 0.671);
+        border-radius: 7px;
+        }
+        .EX_list{
+        width: 45%;
+        float:left;
+        margin-top: 10%;
+        background-color:  rgba(199, 199, 199, 0.671);
+        border-radius: 7px;
+        }
+        .save{
+        font-size: 20px;
+        border-radius: 5px;
+        margin-top: 20px;
+        cursor: pointer;
+        padding-top: 14px;
+        padding-bottom: 14px;
+        width: 20%;
+        background-color:rgb(15, 180, 0);
+        }
+        .back{
+        font-size: 20px;
+        border-radius: 5px;
+        margin-top: 20px;
+        cursor: pointer;
+        padding-top: 14px;
+        padding-bottom: 14px;
+        width: 20%;
+        background-color:  rgb(255, 0, 0);
+        }
+        th{
+
+        font-size: 20px;
+        width: 300px;
+        border-bottom: solid black 3px;
+        }
+        .cup{
+        font-size: 20px;
+        border-radius: 5px;
+        margin-top: 20px;
+        cursor: pointer;
+        padding-top: 14px;
+        padding-bottom: 14px;
+        width: 40%;
+        background-color:rgb(15, 180, 0);
+        }
+        .BBBB, .AAAA{
+        font-size: 25px;
+        }
+        .btn{
+        float:left;
+        cursor: pointer;
+        font-size: 20px;
+        padding: 4px;
+        border-radius: 5px;
+        width: 55%;
+        margin-left: 5px;
+        background-color:  rgb(255, 0, 0);
+        }
+        .butt{
+        float:left;
+        cursor: pointer;
+        font-size: 20px;
+        padding: 4px;
+        border-radius: 5px;
+        width: 40%;
+        background-color:rgb(15, 180, 0);
+        }
+        #sel{
+        cursor: pointer;
+        font-size: 20px;
+        padding: 4px;
+        border-radius: 5px;
+        }
+        .SE{
+        font-size: 30px;
+        background-color:  rgba(0, 0, 0, 0.671);
+        border-radius: 5px;
+        color: white;
+        }
+        .TE{
+            font-size: 40px;
+           }
+        @media screen and (max-width: 600px){
+        .add{
+            width:100%;
+            margin-left: 0;
+            margin-top: 10%;
+         }
+         .back{
+         width: 100%;
+         }
+         .SE{
+         font-size: 20px;
+         }
+         .TE{
+            font-size: 20px;
+         }
+         .btn,.butt{
+         font-size: 15px;
+         }
+         .cup{
+         width: 70%;
+         }
+         .EX_list{
+         width: 100%;
+         }
+         body{
+        background-size:500px 600px;
+        }
+        }
+    </style>
+</head>
+
+<body>
+        {% extends 'design.html' %}
+
+    {% block content %}
+        <div class="add">
+            <form method="post">
+                <center>
+                <label class="TE">Add Expense</label><hr><br>
+                </center>
+                <label class="lvl1">Budget Title</label>
+                <center>
+                    <input type="text" placeholder="Enter Budget Title" name="budget_f" class="txt1" value="{{ request.form['budget_f'] }}">
+                </center>
+                <label class="lvl1">Amount</label>
+                <center>
+                    <input type="text" placeholder="Enter Budget Amount" name="amount" class="txt1" value="{{ request.form['amount'] }}">
+                </center>
+                    <button type="submit" name="save" class="save">Update</button>
+            </form>
+        </div>
+
+
+
+    <div class="EX_list">
+        <b>
+                <label class="SE" style="float:left;">Total Budget: Php {{ pl }}</label>
+                <label class="SE" style="float:right">Total Expenses: Php {{ su }}</label><hr class="m"></b><br>
+                <label class="TE">Expenses List</label><hr><br>
+        <table class="box1">
+            <tr>
+                <th>Budget Name</th>
+                <th>Budget Amount</th>
+                <th>Action</th>
+            </tr>
+        {% for x in plan %}
+            <tr>
+                <td class="BBBB">{{ x[1] }}</td>
+                <td class="AAAA">Php {{ x[2] }}</td>
+                <td ><a href="{{ url_for('edit', data = I, id = x[0]) }}"><button class="butt">Edit</button></a>
+                    <form action="{{ url_for('delete', daa = I, id=x[0]) }}" method="POST">
+                    <button type="submit" class="btn" onclick="return confirm('Are you sure you want to delete this post?')">
+                        Delete Post
+                    </button>
+                    </form>
+                 </td>
+            </tr>
+
+        {% endfor %}
+
+        </table>
+    </div>
+        <a href="http://localhost:5000/{{ I }}/home"><button class="back">Back</button></a>
+    {% endblock %}
+</body>
+</html>

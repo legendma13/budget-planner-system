@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+
+    <style>
+body{
+background-image: url('https://webstockreview.net/images/frost-border-png.png');
+background-size: cover;
+}
+.welcome{
+    margin-top: 5%;
+    position: relative;
+    font-size: 40px;
+}
+.BPS{
+font-size: 60px;
+}
+.login{
+position:absolute;
+font-size: 40px;
+font-family:'Times New Roman', Times, serif;
+padding: 4%;
+margin-top: 8%;
+border:none;
+right:44%;
+background-color: transparent;
+background-image:url('https://pngimg.com/uploads/circle/circle_PNG61.png');
+background-size: 220px 170px;
+background-repeat: no-repeat;
+border-radius: 50%
+}
+.login:hover{
+color: red;
+}
+.money{
+right:70%;
+top: 43%;
+position: absolute;
+width: 600px;
+height: 450px;
+}
+.pic{
+position: absolute;
+width: 200px;
+top: 50%;
+right:44%;
+}
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+.log {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.log:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+  cursor: pointer;
+}
+.cancelbtn:hover{
+  background-color: rgb(163, 0, 0);
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 15%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: rgba(255, 255, 255, 0.514);
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+@media screen and (max-width: 600px){
+    body{
+    background-repeat: no-repeat;
+    background-size:500px 600px;
+    }
+    .welcome{
+    padding-top:10%;
+    }
+    .login{
+    left:35%;
+    background-size: 140px 88px;
+    background-repeat: no-repeat;
+    }
+}
+</style>
+  <center><h1 class="welcome">WELCOME</h1></center>
+  <hr class="a">
+
+</head>
+<body>
+<center>
+  <br>
+  <br>
+  <br>
+  <br>
+  <label class="BPS">Budget Planner System</label><br>
+  <button onclick="document.getElementById('id01').style.display='block'" class="login">Login</button>
+
+</center>
+    <div id="id01" class="modal">
+
+      <form class="modal-content animate" method="post">
+        <div class="imgcontainer">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+          <img src="https://www.logolynx.com/images/logolynx/c4/c4e297cf6b1f22c8df0e7d5ef5bf846e.png" alt="Avatar" class="avatar">
+        </div>
+        <div class="container">
+        <label for="username"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="username" required class="up" value="{{ request.form['username'] }}">
+
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" required class="up" value="{{ request.form['password'] }}">
+        <button type="submit" class="log">Login</button>
+          <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+          </label>
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+          <span class="psw">Forgot <a href="reset">password?</a></span>
+        </div>
+      </form>
+    </div>
+<img src="https://th.bing.com/th/id/R3348c8af537fc9309c7fb12ccda66acb?rik=9bacwr838oD4Zw&riu=http%3a%2f%2fimages2.wikia.nocookie.net%2f__cb20120614093406%2fclubpenguin%2fimages%2f6%2f6f%2fMoney_Bag_icon.png&ehk=uK3dx4kOvZhL%2fuLXJ1QOXCdKuJWKZ6INABnQCXHezWE%3d&risl=&pid=ImgRaw" alt="Avatar" class="money">
+
+</body>
+</html>

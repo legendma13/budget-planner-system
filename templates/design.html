@@ -1,0 +1,94 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <style>
+          *{
+          padding:0;
+          margin:0;
+          }
+          .nav{
+          background-color:  rgba(0, 0, 0, 0.671);
+          color:white;
+          font-size:40px;
+          padding-top: 20px;
+          padding-bottom: 20px;
+          }
+          .m{
+          width:90%;
+          }
+          .btn:hover{
+          background-color:  rgb(219, 41, 41);
+          }
+          .butt:hover,.save:hover,.cup:hover{
+          background-color:rgb(12, 145, 0);
+          }
+          .lvl1{
+          padding: 10px;
+          font-size: 35px;
+          }
+          .txt1{
+          margin-top: 20px;
+          width: 90%;
+          font-size: 35px;
+          border-radius: 7px;
+          padding-left: 20px
+          }
+          .logout{
+          display: block;
+          float: right;
+          cursor: pointer;
+          background-color: black;
+          color: white;
+          padding: 10px;
+          font-size: 15px;
+          border-radius: 5px;
+          margin-right: 10px;
+          }
+          .cal{
+          float: right;
+          cursor: pointer;
+          background-color: black;
+          color: white;
+          padding: 10px;
+          font-size: 15px;
+          border-radius: 5px;
+          margin-right: 10px;
+          }
+          .logout:hover,.cal:hover{
+          background-color: rgb(46, 46, 46);
+          color: white;
+          }
+          @media screen and (max-width: 600px){
+          .nav{
+          font-size: 30px;
+          }
+          .logout{
+          padding: 6px;
+          font-size: 15px;
+          border-radius: 5px;
+          display: none;
+          }
+          .txt1{
+          font-size: 20px;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          width: 95%;
+          margin: 0;
+          padding-left:10px;
+          }
+          }
+      </style>
+  </head>
+  <body>
+        <div class="nav" id="navbarNav">
+            <label class="title">Budget Management System</label>
+            <a href="/calculator"><button class="logout">calculator</button></a>
+            <a href="/"><button class="cal">Logout</button></a>
+        </div>
+<div>
+
+    {% block content %} {% endblock %}
+</div>
+  </body>
+</html>

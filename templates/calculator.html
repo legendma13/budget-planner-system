@@ -1,0 +1,115 @@
+<html lang="en">
+  <head>
+    <title>Calculator</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='css/app.css') }}"
+    />
+      <style>
+          * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: sans-serif;
+  background: #111;
+  color: white;
+}
+.header {
+  text-align: center;
+  padding: 1.5rem 0;
+  background: rgba(152, 0, 223, 0.527);
+}
+form {
+  margin: 3rem;
+  padding: 1rem;
+  background: rgba(174, 0, 255, 0.527);
+}
+.form-group {
+  padding: 0.5rem 0;
+}
+.form-group label {
+  display: block;
+}
+.form-group input {
+  width: 100%;
+  padding: 0.3rem 0.3rem;
+  margin: 0.5rem 0;
+}
+.form-group select {
+  width: 100%;
+  border: none;
+  margin: 0.2rem 0;
+}
+.btn {
+  display: block;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  background: rgba(57, 2, 83, 0.527);
+  color: white;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+}
+.back{
+  display: block;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  background: rgba(184, 30, 255, 0.527);
+  color: white;
+  border: none;
+  width:80%;
+  cursor: pointer;
+}
+.alert {
+  display: block;
+  padding: 0.5rem;
+  background: rgba(184, 30, 255, 0.527);
+  color: white;
+  border: none;
+  width: 100%;
+  text-align: center;
+}
+      </style>
+  </head>
+  <body>
+    <div class="header">
+      <h2>Calculator</h2>
+    </div>
+    <!-- Form -->
+    <div class="container">
+      <form action="/calculator" method="POST">
+        <div class="form-group">
+          <label for="Number One">First Number</label>
+          <input type="text" placeholder="First Number" name="num1" value="{{ request.form['num1'] }}">
+        </div>
+        <div class="form-group">
+          <label for="Number Two">Second Number</label>
+          <input type="text" placeholder="Second Number" name="num2" value="{{ request.form['num2'] }}">
+        </div>
+        <div class="form-group">
+          <label for="Operation">Operation</label>
+          <select name="operation">
+            <option value="add">Add</option>
+            <option value="subtract">Subtract</option>
+            <option value="multiply">Multiply</option>
+            <option value="divide">Divide</option>
+          </select>
+        </div>
+          <input type="submit" value="Calculate" id="calc_btn" class="btn" />
+
+        <br />
+        <div class="alert">
+          This is an alert
+        </div>
+          <div class="alert">
+          {{ result }}
+        </div>
+      </form>
+        <center>
+        <a href="home"><button class="back" />back</button></a>
+        </center>
+    </div>
+  </body>
+</html>

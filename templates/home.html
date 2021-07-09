@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Plan</title>
+     <style>
+        body{
+        background-image: url('https://webstockreview.net/images/frost-border-png.png');
+        background-size: cover;
+        }
+        .add{
+        width:40%;
+        float:left;
+        margin-top: 10%;
+        margin-left: 7%;
+        margin-right: 3%;
+        background-color:  rgba(199, 199, 199, 0.671);
+        border-radius: 7px;
+        }
+        .EX_list{
+        width: 40%;
+        float:left;
+        margin-top: 10%;
+        background-color:  rgba(199, 199, 199, 0.671);
+        border-radius: 7px;
+        }
+        .save{
+        font-size: 20px;
+        border-radius: 5px;
+        margin-top: 20px;
+        cursor: pointer;
+        padding-top: 14px;
+        padding-bottom: 14px;
+        width: 20%;
+        background-color:rgb(15, 180, 0);
+        }
+        th{
+
+        font-size: 20px;
+        width: 300px;
+        border-bottom: solid black 3px;
+        }
+        .cup{
+        font-size: 20px;
+        border-radius: 5px;
+        margin-top: 20px;
+        cursor: pointer;
+        padding-top: 14px;
+        padding-bottom: 14px;
+        width: 40%;
+        background-color:rgb(15, 180, 0);
+        }
+        .BBBB, .AAAA{
+        font-size: 25px;
+        }
+        .btn{
+        cursor: pointer;
+        font-size: 20px;
+        padding: 4px;
+        border-radius: 5px;
+        background-color:  rgb(255, 0, 0);
+        }
+        #sel{
+         cursor: pointer;
+        font-size: 20px;
+        padding: 4px;
+        border-radius: 5px;
+        }
+        .TE{
+            font-size: 40px;
+           }
+        @media screen and (max-width: 600px){
+        .add{
+            width:100%;
+            margin-left: 0;
+            margin-top: 10%;
+         }
+         .cup{
+         width: 70%;
+         }
+         .EX_list{
+         width: 100%;
+         }
+         body{
+        background-size:500px 600px;
+        }
+        }
+    </style>
+</head>
+<body>
+{% extends 'design.html' %}
+{% block content %}
+<div class="box1">
+        <div class="add">
+            <form method="post">
+                <center>
+                <label class="TE">Add Plan</label><hr><br>
+                </center>
+                <label class="lvl1">Plan Title</label>
+                <center>
+                    <input type="text" placeholder="Enter Budget Title" name="table" class="txt1" value="{{ request.form['table'] }}">
+                </center>
+                <label class="lvl1">Total Budget Amount</label>
+                <center>
+                    <input type="text" placeholder="Enter Budget Amount" name="t_budget" class="txt1" value="{{ request.form['t_budget'] }}">
+                </center>
+                <button type="submit" name="save" class="save">Save</button>
+            </form>
+        </div>
+
+
+<div class="EX_list">
+    <center>
+        <label class="TE">Plan List</label><hr>
+    </center>
+        <table class="box1">
+            <tr>
+                <th>Budget Title</th>
+                <th>Budget Total Amount</th>
+                <th>Action</th>
+                <th>Schedule</th>
+            </tr>
+        {% for x in sh %}
+            <tr>
+
+               <td class="BBBB"> <a href="{{ url_for('home', id = x[1]) }}">{{ x[1] }}</a></td>
+                <td class="AAAA">Php {{ x[2] }}</td>
+                 <td class="del">
+                     <form action="{{ url_for('del_plan', sid = x[1]) }}" method="POST">
+                        <input type="submit" value="Delete Plan"
+                                class="btn"
+                                onclick="return confirm('Are you sure you want to delete this post?')">
+                        </form>
+                 </td>
+                <td class="sel">
+                    <select name="sel" id="sel">
+                      <option value="Daily">Daily</option>
+                      <option value="Weekly">Weekly</option>
+                      <option value="Monthly">Monthly</option>
+                    </select>
+                </td>
+            </tr>
+
+        {% endfor %}
+
+        </table>
+    </div>
+        <a href="change"><button type="submit" name="save" class="cup">Change username/password</button></a>
+    </div>
+    {% endblock %}
+
+</body>
+</html>
+
